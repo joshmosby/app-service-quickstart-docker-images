@@ -83,6 +83,10 @@ RUN set -ex \
 # =========
 # Configure
 # =========
+# Add rsyslog
+ADD http://alpine.adiscon.com/rsyslog@lists.adiscon.com-5a55e598.rsa.pub /etc/apk/keys
+RUN echo 'http://alpine.adiscon.com/3.7/stable' >> /etc/apk/repositories
+RUN apk add rsyslog
 # nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
